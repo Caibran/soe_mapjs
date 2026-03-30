@@ -25,11 +25,18 @@ export class SettingsState {
       settings = {};
     }
 
+    const isWeb = typeof window !== "undefined" && !window.bridge;
+    const defaultMode = isWeb;
+    const defaultURL = isWeb
+      ? window.location.origin +
+      window.location.pathname.replace(/\/[^/]*$/, "/")
+      : "";
+
     return SettingsState.fromValues(
       settings.gfxDirectory ?? null,
       settings.customAssetsDirectory ?? null,
-      settings.connectedModeEnabled ?? false,
-      settings.connectedModeURL ?? "",
+      settings.connectedModeEnabled ?? defaultMode,
+      settings.connectedModeURL ?? defaultURL,
     );
   }
 }
