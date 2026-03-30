@@ -531,6 +531,7 @@ export class Application extends LitElement {
         @tool-selected=${this.onToolSelected}
         @undo=${this.undo}
         @redo=${this.redo}
+        @open-map=${this.onOpenMapRequested}
       ></eomap-sidebar>
       ${this.renderEditor()}
       <sp-dropzone
@@ -722,6 +723,10 @@ export class Application extends LitElement {
       throw e;
     }
     this.dirtyCheck(() => this.openFile(fileHandle));
+  }
+
+  onOpenMapRequested(_event) {
+    this.open();
   }
 
   async openRemoteMap(id) {

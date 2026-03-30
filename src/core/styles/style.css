@@ -14,11 +14,11 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  touch-action: none;
+  touch-action: pan-x pan-y pinch-zoom;
   -webkit-tap-highlight-color: transparent;
 }
 
-body > sp-theme {
+body>sp-theme {
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -32,26 +32,18 @@ sp-switch {
 }
 
 .spectrum-Table {
-  --spectrum-table-m-regular-row-background-color-down: var(
-    --spectrum-global-color-gray-200
-  );
-  --spectrum-table-m-regular-row-background-color-selected: var(
-    --spectrum-global-color-gray-200
-  );
+  --spectrum-table-m-regular-row-background-color-down: var(--spectrum-global-color-gray-200);
+  --spectrum-table-m-regular-row-background-color-selected: var(--spectrum-global-color-gray-200);
 }
 
 .spectrum-Table-row.focus-visible {
-  background-color: var(
-    --spectrum-table-m-regular-row-background-color-hover,
-    var(--spectrum-alias-highlight-hover)
-  );
+  background-color: var(--spectrum-table-m-regular-row-background-color-hover,
+      var(--spectrum-alias-highlight-hover));
 }
 
 .spectrum-Table-row.focus-visible:active {
-  background-color: var(
-    --spectrum-table-m-regular-row-background-color-down,
-    var(--spectrum-alias-highlight-down)
-  );
+  background-color: var(--spectrum-table-m-regular-row-background-color-down,
+      var(--spectrum-alias-highlight-down));
 }
 
 .spectrum-Table-row.focus-visible::after {
@@ -66,61 +58,35 @@ sp-switch {
   border-radius: var(--spectrum-table-regular-cell-border-radius-key-focus);
 }
 
-.spectrum-Table
-  tbody.spectrum-Table-body:last-of-type
-  .spectrum-Table-row:last-of-type::after {
+.spectrum-Table tbody.spectrum-Table-body:last-of-type .spectrum-Table-row:last-of-type::after {
   bottom: 1px;
 }
 
-.spectrum-Table
-  tbody.spectrum-Table-body:last-of-type
-  .spectrum-Table-row:last-of-type
-  .spectrum-Table-cell {
-  border-bottom: 1px solid
-    var(
-      --spectrum-table-m-regular-border-color,
-      var(--spectrum-alias-border-color-mid)
-    );
+.spectrum-Table tbody.spectrum-Table-body:last-of-type .spectrum-Table-row:last-of-type .spectrum-Table-cell {
+  border-bottom: 1px solid var(--spectrum-table-m-regular-border-color,
+      var(--spectrum-alias-border-color-mid));
 }
 
-.spectrum-Table
-  tbody.spectrum-Table-body:not(:first-of-type)
-  .spectrum-Table-row:first-of-type
-  .spectrum-Table-cell:first-child {
+.spectrum-Table tbody.spectrum-Table-body:not(:first-of-type) .spectrum-Table-row:first-of-type .spectrum-Table-cell:first-child {
   border-top-left-radius: unset !important;
 }
 
-.spectrum-Table
-  tbody.spectrum-Table-body:not(:first-of-type)
-  .spectrum-Table-row:first-of-type
-  .spectrum-Table-cell:last-child {
+.spectrum-Table tbody.spectrum-Table-body:not(:first-of-type) .spectrum-Table-row:first-of-type .spectrum-Table-cell:last-child {
   border-top-right-radius: unset !important;
 }
 
-.spectrum-Table
-  tbody.spectrum-Table-body:not(:last-of-type)
-  .spectrum-Table-row:last-of-type
-  .spectrum-Table-cell:first-child {
+.spectrum-Table tbody.spectrum-Table-body:not(:last-of-type) .spectrum-Table-row:last-of-type .spectrum-Table-cell:first-child {
   border-bottom-left-radius: unset !important;
 }
 
-.spectrum-Table
-  tbody.spectrum-Table-body:not(:last-of-type)
-  .spectrum-Table-row:last-of-type
-  .spectrum-Table-cell:last-child {
+.spectrum-Table tbody.spectrum-Table-body:not(:last-of-type) .spectrum-Table-row:last-of-type .spectrum-Table-cell:last-child {
   border-bottom-right-radius: unset !important;
 }
 
-.spectrum-Table
-  tbody.spectrum-Table-body:last-of-type
-  .spectrum-Table-row:last-of-type
-  .spectrum-Table-cell:first-child {
+.spectrum-Table tbody.spectrum-Table-body:last-of-type .spectrum-Table-row:last-of-type .spectrum-Table-cell:first-child {
   border-bottom-left-radius: var(--spectrum-table-regular-border-radius);
 }
 
-.spectrum-Table
-  tbody.spectrum-Table-body:last-of-type
-  .spectrum-Table-row:last-of-type
-  .spectrum-Table-cell:last-child {
+.spectrum-Table tbody.spectrum-Table-body:last-of-type .spectrum-Table-row:last-of-type .spectrum-Table-cell:last-child {
   border-bottom-right-radius: var(--spectrum-table-regular-border-radius);
 }

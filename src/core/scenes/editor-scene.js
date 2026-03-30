@@ -400,26 +400,8 @@ export class EditorScene extends Phaser.Scene {
     }
 
     if (this.isPinching) {
-      const scale = currentDistance / this.pinchStartDistance;
-      const newZoom = Phaser.Math.Clamp(
-        this.pinchStartZoom * scale,
-        ZoomTool.MIN_ZOOM,
-        ZoomTool.MAX_ZOOM,
-      );
-
-      // Zoom towards the midpoint of the two pointers
-      const midPoint = new Phaser.Math.Vector2(
-        (this.input.pointer1.x + this.input.pointer2.x) / 2,
-        (this.input.pointer1.y + this.input.pointer2.y) / 2,
-      );
-
-      const worldPointBefore = this.map.camera.getWorldPoint(midPoint.x, midPoint.y);
-      this.map.zoom = newZoom;
-      this.map.camera.preRender();
-      const worldPointAfter = this.map.camera.getWorldPoint(midPoint.x, midPoint.y);
-
-      this.map.camera.scrollX -= worldPointAfter.x - worldPointBefore.x;
-      this.map.camera.scrollY -= worldPointAfter.y - worldPointBefore.y;
+      // Custom pinch-to-zoom disabled in favor of browser-native page zoom
+      return;
     }
   }
 

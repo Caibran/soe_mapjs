@@ -11,6 +11,7 @@ import {
   StarIcon,
   UndoIcon,
   RedoIcon,
+  FolderOpenIcon,
 } from "@spectrum-web-components/icons-workflow";
 
 import "./action-group";
@@ -97,6 +98,12 @@ export class Sidebar extends LitElement {
     return html`
       <eomap-action-group vertical>
         ${this.renderMenubar()}
+        <eomap-sidebar-button
+          label="Maps"
+          .icon=${FolderOpenIcon}
+          @click=${this.onMapsClick}
+        >
+        </eomap-sidebar-button>
         ${this.renderToolButtons()}
       </sp-action-group>
       <sp-action-group vertical>
@@ -116,6 +123,11 @@ export class Sidebar extends LitElement {
         </eomap-sidebar-button>
       </eomap-action-group>
     `;
+  }
+
+  onMapsClick(event) {
+    event.preventDefault();
+    this.dispatchEvent(new CustomEvent("open-map"));
   }
 
   onToolClick(event) {
