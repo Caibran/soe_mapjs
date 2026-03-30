@@ -55,8 +55,9 @@ export class SettingsController {
     return SettingsState.fromValues(
       this._deserializeHandle(serializedSettings.gfxDirectory),
       this._deserializeHandle(serializedSettings.customAssetsDirectory),
-      serializedSettings.connectedModeEnabled ?? false,
-      serializedSettings.connectedModeURL ?? "",
+      serializedSettings.connectedModeEnabled ??
+      SettingsState.defaultConnectedModeEnabled,
+      serializedSettings.connectedModeURL || SettingsState.defaultConnectedModeURL,
     );
   }
 

@@ -20,23 +20,34 @@ export class SettingsState {
     return result;
   }
 
+  static get isWeb() {
+    return typeof window !== "undefined" && !window.bridge;
+  }
+
+  static get defaultConnectedModeEnabled() {
+    return SettingsState.isWeb;
+  }
+
+  static get defaultConnectedModeURL() {
+    if (SettingsState.isWeb) {
+      return (
+        window.location.origin +
+        window.location.pathname.replace(/\/[^/]*$/, "/")
+      );
+    }
+    return "";
+  }
+
   static fromIDB(settings) {
     if (settings === undefined) {
       settings = {};
     }
 
-    const isWeb = typeof window !== "undefined" && !window.bridge;
-    const defaultMode = isWeb;
-    const defaultURL = isWeb
-      ? window.location.origin +
-      window.location.pathname.replace(/\/[^/]*$/, "/")
-      : "";
-
     return SettingsState.fromValues(
       settings.gfxDirectory ?? null,
       settings.customAssetsDirectory ?? null,
-      settings.connectedModeEnabled ?? defaultMode,
-      settings.connectedModeURL ?? defaultURL,
+      settings.connectedModeEnabled ?? SettingsState.defaultConnectedModeEnabled,
+      settings.connectedModeURL || SettingsState.defaultConnectedModeURL,
     );
   }
 }
