@@ -1,0 +1,205 @@
+{
+  "globalLight": {
+    "color": "#000033",
+    "strength": 5.0
+  },
+  "playerLight": {
+    "enabled": true,
+    "color": "#FFFFFF",
+    "size": 2.4,
+    "spread": 7.0,
+    "intensity": 1.0,
+    "flicker": false,
+    "flickerSpeed": 1.0,
+    "flickerIntensity": 0.0
+  },
+  "lightSources": [
+    {
+      "x": 38,
+      "y": 26,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 21,
+      "y": 20,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 29,
+      "y": 17,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 22,
+      "y": 12,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 23,
+      "y": 6,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 14,
+      "y": 16,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 9,
+      "y": 18,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 19,
+      "y": 36,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 26,
+      "y": 29,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 21,
+      "y": 51,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 20,
+      "y": 58,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 25,
+      "y": 63,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 51,
+      "y": 26,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 59,
+      "y": 23,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 65,
+      "y": 27,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 44,
+      "y": 10,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 41,
+      "y": 17,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    }
+  ]
+}

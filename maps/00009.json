@@ -1,0 +1,84 @@
+{
+  "globalLight": {
+    "color": "#070F1A",
+    "strength": 6
+  },
+  "playerLight": {
+    "enabled": true,
+    "color": "#FFFFFF",
+    "size": 2,
+    "spread": 3,
+    "intensity": 0.30000000000000004,
+    "flicker": false,
+    "flickerSpeed": 0,
+    "flickerIntensity": 0
+  },
+  "lightSources": [
+    {
+      "x": 12,
+      "y": 14,
+      "color": "#FF00F3",
+      "size": 3,
+      "spread": 2,
+      "intensity": 3,
+      "flicker": false,
+      "flickerSpeed": 1,
+      "flickerIntensity": 0
+    },
+    {
+      "x": 20,
+      "y": 27,
+      "color": "#FF00F3",
+      "size": 3,
+      "spread": 2,
+      "intensity": 3,
+      "flicker": false,
+      "flickerSpeed": 1,
+      "flickerIntensity": 0
+    },
+    {
+      "x": 24,
+      "y": 15,
+      "color": "#FF00F3",
+      "size": 3,
+      "spread": 2,
+      "intensity": 3,
+      "flicker": false,
+      "flickerSpeed": 1,
+      "flickerIntensity": 0
+    },
+    {
+      "x": 34,
+      "y": 18,
+      "color": "#FF00F3",
+      "size": 3,
+      "spread": 2,
+      "intensity": 3,
+      "flicker": false,
+      "flickerSpeed": 1,
+      "flickerIntensity": 0
+    },
+    {
+      "x": 35,
+      "y": 13,
+      "color": "#FF00F3",
+      "size": 3,
+      "spread": 2,
+      "intensity": 3,
+      "flicker": false,
+      "flickerSpeed": 1,
+      "flickerIntensity": 0
+    },
+    {
+      "x": 34,
+      "y": 7,
+      "color": "#27F57D",
+      "size": 3,
+      "spread": 4,
+      "intensity": 3,
+      "flicker": false,
+      "flickerSpeed": 1,
+      "flickerIntensity": 0
+    }
+  ]
+}

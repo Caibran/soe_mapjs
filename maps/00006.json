@@ -1,0 +1,52 @@
+{
+  "globalLight": {
+    "color": "#000033",
+    "strength": 5.0
+  },
+  "lightSources": [
+    {
+      "x": 7,
+      "y": 15,
+      "color": "#0b89ff",
+      "size": 5.0,
+      "spread": 8.3,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 12,
+      "y": 2,
+      "color": "#47ff76",
+      "size": 2.5,
+      "spread": 2.3,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "color": "#47ff76",
+      "size": 2.5,
+      "spread": 2.3,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 6,
+      "y": 4,
+      "color": "#0b89ff",
+      "size": 2.5,
+      "spread": 2.3,
+      "intensity": 1.0,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    }
+  ]
+}

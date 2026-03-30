@@ -1,0 +1,183 @@
+{
+  "globalLight": {
+    "color": "#000033",
+    "strength": 5.0
+  },
+  "playerLight": {
+    "enabled": true,
+    "color": "#FFFFFF",
+    "size": 2.4,
+    "spread": 7.0,
+    "intensity": 1.0,
+    "flicker": false,
+    "flickerSpeed": 1.0,
+    "flickerIntensity": 0.0
+  },
+  "lightSources": [
+    {
+      "x": 47,
+      "y": 41,
+      "color": "#ffae00",
+      "size": 1.8,
+      "spread": 3.0,
+      "intensity": 1.2,
+      "flicker": false,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 2.3
+    },
+	{
+      "x": 47,
+      "y": 34,
+      "color": "#ffae00",
+      "size": 1.8,
+      "spread": 3.0,
+      "intensity": 1.2,
+      "flicker": false,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 2.3
+    },
+	{
+      "x": 54,
+      "y": 35,
+      "color": "#ffae00",
+      "size": 1.8,
+      "spread": 3.0,
+      "intensity": 1.2,
+      "flicker": false,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 2.3
+    },
+	{
+      "x": 47,
+      "y": 49,
+      "color": "#ffae00",
+      "size": 1.8,
+      "spread": 3.0,
+      "intensity": 1.2,
+      "flicker": false,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 2.3
+    },
+	{
+      "x": 52,
+      "y": 24,
+      "color": "#ffae00",
+      "size": 1.8,
+      "spread": 3.0,
+      "intensity": 1.2,
+      "flicker": false,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 2.3
+    },
+	{
+      "x": 46,
+      "y": 23,
+      "color": "#ffae00",
+      "size": 1.8,
+      "spread": 3.0,
+      "intensity": 1.2,
+      "flicker": false,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 2.3
+    },
+	{
+      "x": 34,
+      "y": 20,
+      "color": "#ffae00",
+      "size": 1.8,
+      "spread": 3.0,
+      "intensity": 1.2,
+      "flicker": false,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 2.3
+    },
+	{
+      "x": 30,
+      "y": 23,
+      "color": "#ffae00",
+      "size": 1.8,
+      "spread": 3.0,
+      "intensity": 1.2,
+      "flicker": false,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 2.3
+    },
+	{
+      "x": 24,
+      "y": 15,
+      "color": "#ffae00",
+      "size": 1.8,
+      "spread": 3.0,
+      "intensity": 1.2,
+      "flicker": false,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 2.3
+    },
+	{
+      "x": 17,
+      "y": 22,
+      "color": "#ffae00",
+      "size": 1.8,
+      "spread": 3.0,
+      "intensity": 1.2,
+      "flicker": false,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 2.3
+    },
+	{
+      "x": 17,
+      "y": 28,
+      "color": "#ffae00",
+      "size": 1.8,
+      "spread": 3.0,
+      "intensity": 1.2,
+      "flicker": false,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 2.3
+    },
+	{
+      "x": 15,
+      "y": 38,
+      "color": "#ffae00",
+      "size": 1.8,
+      "spread": 3.0,
+      "intensity": 1.2,
+      "flicker": false,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 2.3
+    },
+    {
+      "x": 52,
+      "y": 56,
+      "color": "#ffae00",
+      "size": 2.8,
+      "spread": 4.0,
+      "intensity": 0.8,
+      "flicker": true,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 3.2
+    },
+    {
+      "x": 55,
+      "y": 62,
+      "color": "#ffae00",
+      "size": 2.8,
+      "spread": 4.0,
+      "intensity": 0.8,
+      "flicker": true,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 3.2
+    },
+    {
+      "x": 54,
+      "y": 69,
+      "color": "#ffae00",
+      "size": 2.8,
+      "spread": 4.0,
+      "intensity": 0.8,
+      "flicker": true,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 3.2
+    },
+  ]
+} 
