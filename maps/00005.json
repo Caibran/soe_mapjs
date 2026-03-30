@@ -1,0 +1,40 @@
+{
+  "globalLight": {
+    "color": "#000000",
+    "strength": 5.0
+  },
+  "playerLight": {
+    "enabled": true,
+    "color": "#FFFFFF",
+    "size": 2.4,
+    "spread": 7.0,
+    "intensity": 1.0,
+    "flicker": false,
+    "flickerSpeed": 1.0,
+    "flickerIntensity": 0.0
+  },
+  "lightSources": [
+    {
+      "x": 5,
+      "y": 8,
+      "color": "#fe9d0f",
+      "size": 2.3,
+      "spread": 4.3,
+      "intensity": 1.1,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    },
+    {
+      "x": 5,
+      "y": 2,
+      "color": "#fe9d0f",
+      "size": 2.3,
+      "spread": 4.3,
+      "intensity": 1.1,
+      "flicker": false,
+      "flickerSpeed": 1.0,
+      "flickerIntensity": 0.0
+    }
+  ]
+}

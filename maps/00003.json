@@ -1,0 +1,117 @@
+{
+  "globalLight": {
+    "color": "#000033",
+    "strength": 5.0
+  },
+  "playerLight": {
+    "enabled": true,
+    "color": "#FFFFFF",
+    "size": 2.4,
+    "spread": 7.0,
+    "intensity": 1.0,
+    "flicker": false,
+    "flickerSpeed": 1.0,
+    "flickerIntensity": 0.0
+  },
+  "lightSources": [
+    {
+      "x": 19,
+      "y": 32,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": true,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 1.0
+    },
+    {
+      "x": 19,
+      "y": 38,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": true,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 1.0
+    },
+    {
+      "x": 24,
+      "y": 42,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": true,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 1.0
+    },
+    {
+      "x": 29,
+      "y": 40,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": true,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 1.0
+    },
+    {
+      "x": 32,
+      "y": 56,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": true,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 1.0
+    },
+    {
+      "x": 34,
+      "y": 48,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": true,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 1.0
+    },
+    {
+      "x": 39,
+      "y": 40,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": true,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 1.0
+    },
+    {
+      "x": 46,
+      "y": 41,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": true,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 1.0
+    },
+    {
+      "x": 46,
+      "y": 32,
+      "color": "#ffb447",
+      "size": 2.5,
+      "spread": 2.8,
+      "intensity": 1.0,
+      "flicker": true,
+      "flickerSpeed": 2.0,
+      "flickerIntensity": 1.0
+    }
+  ]
+}
