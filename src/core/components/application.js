@@ -692,6 +692,24 @@ export class Application extends LitElement {
   }
 
   async open() {
+    if (this.isConnectedMode()) {
+      let onButtonPress = (buttonIndex, value) => {
+        if (buttonIndex === 0 && value) {
+          this.openRemoteMap(value);
+        }
+      };
+      this.showPrompt(
+        new PromptState(
+          PromptType.Input,
+          "Open Remote Map",
+          "Enter map number (e.g. 001)",
+          ["Open", "Cancel"],
+          onButtonPress,
+        ),
+      );
+      return;
+    }
+
     let fileHandle;
     try {
       [fileHandle] = await this.fileSystemProvider.showOpenFilePicker(
@@ -703,6 +721,18 @@ export class Application extends LitElement {
       }
       throw e;
     }
+    this.dirtyCheck(() => this.openFile(fileHandle));
+  }
+
+  async openRemoteMap(id) {
+    let filename = id;
+    if (/^\d+$/.test(id)) {
+      filename = "map" + id.padStart(3, "0") + ".emf";
+    } else if (!id.endsWith(".emf")) {
+      filename += ".emf";
+    }
+
+    const fileHandle = new RemoteFileHandle(filename, this.gfxLoader.loadingStrategy);
     this.dirtyCheck(() => this.openFile(fileHandle));
   }
 
@@ -891,6 +921,35 @@ export class Application extends LitElement {
 
   async saveAs() {
     if (!this.mapState.loaded) {
+      return;
+    }
+
+    if (this.isConnectedMode()) {
+      let onButtonPress = (buttonIndex, value) => {
+        if (buttonIndex === 0 && value) {
+          let filename = value;
+          if (/^\d+$/.test(value)) {
+            filename = "map" + value.padStart(3, "0") + ".emf";
+          } else if (!value.endsWith(".emf")) {
+            filename += ".emf";
+          }
+          this.mapState.fileHandle = new RemoteFileHandle(
+            filename,
+            this.gfxLoader.loadingStrategy,
+          );
+          this.onMapStateChange();
+          this.save();
+        }
+      };
+      this.showPrompt(
+        new PromptState(
+          PromptType.Input,
+          "Save Remote Map",
+          "Enter map number or filename",
+          ["Save", "Cancel"],
+          onButtonPress,
+        ),
+      );
       return;
     }
 

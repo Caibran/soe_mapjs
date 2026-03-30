@@ -10,6 +10,7 @@ import {
 import "@spectrum-web-components/icon/sp-icon.js";
 import "@spectrum-web-components/button-group/sp-button-group.js";
 import "@spectrum-web-components/button/sp-button.js";
+import "@spectrum-web-components/textfield/sp-textfield.js";
 
 import "./modal";
 import { PromptState, PromptType } from "../state/prompt-state";
@@ -80,6 +81,7 @@ export class Prompt extends LitElement {
 
   renderContent() {
     if (this.state) {
+      const isInput = this.state.type === PromptType.Input;
       return html`
         <div class="message-row">
           <sp-icon class="icon" style="${this.getIconStyle()}">
@@ -88,6 +90,16 @@ export class Prompt extends LitElement {
           <div class="message-container">
             <div class="message">${this.state.message}</div>
             <div class="detail">${this.state.detail}</div>
+            ${isInput
+          ? html`
+                  <sp-textfield
+                    id="inner-input"
+                    class="input-field"
+                    @keydown=${this.onInputKeyDown}
+                    autofocus
+                  ></sp-textfield>
+                `
+          : ""}
           </div>
         </div>
         <sp-button-group class="button-group">
@@ -97,9 +109,16 @@ export class Prompt extends LitElement {
     }
   }
 
+  onInputKeyDown(event) {
+    if (event.key === "Enter") {
+      this.clickButton(0);
+    }
+  }
+
   getIcon() {
     switch (this.state.type) {
       case PromptType.Info:
+      case PromptType.Input:
         return InfoIcon();
       case PromptType.Warning:
         return AlertIcon();
@@ -113,6 +132,7 @@ export class Prompt extends LitElement {
   getIconStyle() {
     switch (this.state.type) {
       case PromptType.Info:
+      case PromptType.Input:
         return "color: var(--spectrum-semantic-informative-status-color)";
       case PromptType.Warning:
         return "color: var(--spectrum-semantic-notice-status-color)";
@@ -129,8 +149,8 @@ export class Prompt extends LitElement {
         <sp-button
           .variant=${i === 0 ? "cta" : "secondary"}
           @click=${() => {
-            this.clickButton(i);
-          }}
+          this.clickButton(i);
+        }}
         >
           ${label}
         </sp-button>
@@ -139,7 +159,9 @@ export class Prompt extends LitElement {
   }
 
   clickButton(buttonIndex) {
-    this.state.onButtonPress?.(buttonIndex);
+    const input = this.shadowRoot.getElementById("inner-input");
+    const value = input ? input.value : undefined;
+    this.state.onButtonPress?.(buttonIndex, value);
     this.open = false;
     this.dispatchEvent(new CustomEvent("close"));
   }

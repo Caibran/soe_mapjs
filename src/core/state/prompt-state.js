@@ -2,6 +2,7 @@ export const PromptType = {
   Info: 0,
   Warning: 1,
   Error: 2,
+  Input: 3,
 };
 
 export class PromptState {

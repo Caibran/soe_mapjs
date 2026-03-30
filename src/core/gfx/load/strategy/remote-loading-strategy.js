@@ -20,10 +20,27 @@ export class RemoteLoadingStrategy extends LoadingStrategy {
   }
 
   async loadRaw(path) {
-    let response = await this.download("assets/" + path);
+    let response = await this.download("maps/" + path);
     let blob = await response.blob();
     let dataURL = await blobToDataURL(blob);
     return dataURLToImageData(dataURL);
+  }
+
+  async loadMap(filename) {
+    let response = await this.download("maps/" + filename);
+    return response.arrayBuffer();
+  }
+
+  async saveMap(filename, data) {
+    let signal = this.abortController.signal;
+    let response = await fetch(this.url + "maps/" + filename, {
+      method: "PUT",
+      body: data,
+      signal,
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error. Status: ${response.status}`);
+    }
   }
 
   async download(path) {

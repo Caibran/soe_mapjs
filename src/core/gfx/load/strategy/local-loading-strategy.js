@@ -53,6 +53,16 @@ export class LocalLoadingStrategy extends LoadingStrategy {
     }
   }
 
+  async loadMap(_filename) {
+    throw new Error("LocalLoadingStrategy.loadMap() not implemented");
+  }
+
+  async saveMap(_filename, _data) {
+    throw new Error("LocalLoadingStrategy.saveMap() not implemented");
+  }
+
+  abort() { }
+
   async getBundledAsset(path) {
     return dataURLToImageData(this.bundledAssets.get(path));
   }
