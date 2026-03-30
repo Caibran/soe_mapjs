@@ -40,6 +40,8 @@ export class WebFileSystemProvider {
   }
 
   get supported() {
-    return self && "showOpenFilePicker" in self;
+    // Safari/iPad doesn't support the File System Access API yet.
+    // We allow it anyway so the UI can load, and we can implement fallbacks later.
+    return true;
   }
 }
