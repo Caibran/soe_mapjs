@@ -11,8 +11,8 @@ import "./entity-editor";
 import "./new-map";
 import "./properties";
 import "./settings";
-import "./about";
 import "./prompt";
+import "./map-explorer";
 
 import { Startup } from "./startup";
 import { Palette } from "./palette";
@@ -40,6 +40,8 @@ import { EOBuilder } from "../data/eo-builder";
 import { CHAR_MAX } from "../data/eo-numeric-limits";
 
 import { FileSystemProvider } from "../filesystem/file-system-provider";
+import { RemoteFileHandle } from "../filesystem/remote-file-handle";
+import { BrowserFileHandle } from "../filesystem/browser-file-handle";
 
 import { LightingState } from "../state/lighting-state";
 
@@ -141,6 +143,12 @@ export class Application extends LitElement {
 
   @query("eomap-prompt")
   prompt;
+
+  @query("eomap-map-explorer")
+  mapExplorer;
+
+  @query("#map-upload")
+  mapUpload;
 
   @property({ type: Boolean, reflect: true, attribute: "dragged" })
   isDragged = false;
@@ -275,6 +283,8 @@ export class Application extends LitElement {
     this.addEventListener("drop", this.onDrop);
     this.addEventListener("context-menu-open", this.onContextMenuOpen);
     this.addEventListener("context-menu-close", this.onContextMenuClose);
+    this.addEventListener("open-map-explorer", this.handleOpenMapExplorer);
+    this.addEventListener("save-map-prompt", this.handleSaveMapPrompt);
   }
 
   undo() {
@@ -531,7 +541,8 @@ export class Application extends LitElement {
         @tool-selected=${this.onToolSelected}
         @undo=${this.undo}
         @redo=${this.redo}
-        @open-map=${this.onOpenMapRequested}
+        @open-map-explorer=${this.handleOpenMapExplorer}
+        @save-map-prompt=${this.handleSaveMapPrompt}
       ></eomap-sidebar>
       ${this.renderEditor()}
       <sp-dropzone
@@ -576,6 +587,17 @@ export class Application extends LitElement {
       ></eomap-settings>
       <eomap-about @close=${this.onModalClose}></eomap-about>
       <eomap-prompt @close=${this.onPromptClose}></eomap-prompt>
+      <eomap-map-explorer
+        @confirm=${this.onMapExplorerConfirm}
+        @cancel=${this.onMapExplorerCancel}
+      ></eomap-map-explorer>
+      <input
+        type="file"
+        id="map-upload"
+        style="display:none"
+        accept=".emf"
+        @change=${this.onMapUploadChange}
+      />
     `;
   }
 
@@ -713,11 +735,21 @@ export class Application extends LitElement {
 
     let fileHandle;
     try {
-      [fileHandle] = await this.fileSystemProvider.showOpenFilePicker(
-        this.emfPickerOptions(),
-      );
+      if (this.fileSystemProvider.supported && !this.isSafariOniPad()) {
+        [fileHandle] = await this.fileSystemProvider.showOpenFilePicker(
+          this.emfPickerOptions(),
+        );
+      } else {
+        this.mapUpload.click();
+        return;
+      }
     } catch (e) {
-      if (e.name === "AbortError") {
+      if (e.name === "AbortError" || e instanceof TypeError) {
+        // Fallback for browsers that claim support but fail (Safari/iPad sometimes)
+        if (e instanceof TypeError) {
+          this.mapUpload.click();
+          return;
+        }
         return;
       }
       throw e;
@@ -725,14 +757,52 @@ export class Application extends LitElement {
     this.dirtyCheck(() => this.openFile(fileHandle));
   }
 
+  isSafariOniPad() {
+    return (
+      navigator.userAgent.includes("Macintosh") &&
+      navigator.maxTouchPoints > 1 &&
+      !window.MSStream
+    );
+  }
+
+  async onMapUploadChange(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const fileHandle = new BrowserFileHandle(file);
+      this.dirtyCheck(() => this.openFile(fileHandle));
+    }
+    event.target.value = "";
+  }
+
   onOpenMapRequested(_event) {
-    this.open();
+    this.handleOpenMapExplorer();
+  }
+
+  handleOpenMapExplorer() {
+    this.mapExplorer.open = true;
+    this.updateHasOpenModal();
+  }
+
+  onMapExplorerConfirm(event) {
+    const mapId = event.detail.mapId;
+    this.mapExplorer.open = false;
+    this.openRemoteMap(mapId);
+    this.updateHasOpenModal();
+  }
+
+  onMapExplorerCancel() {
+    this.mapExplorer.open = false;
+    this.updateHasOpenModal();
+  }
+
+  handleSaveMapPrompt() {
+    this.saveAs();
   }
 
   async openRemoteMap(id) {
     let filename = id;
     if (/^\d+$/.test(id)) {
-      filename = "map" + id.padStart(3, "0") + ".emf";
+      filename = id.padStart(5, "0") + ".emf";
     } else if (!id.endsWith(".emf")) {
       filename += ".emf";
     }
@@ -958,19 +1028,43 @@ export class Application extends LitElement {
       return;
     }
 
+    let fileHandle;
     try {
-      this.mapState.fileHandle =
-        await this.fileSystemProvider.showSaveFilePicker(
-          this.emfPickerOptions(),
+      if (this.fileSystemProvider.supported && !this.isSafariOniPad()) {
+        fileHandle = await this.fileSystemProvider.showSaveFilePicker(
+          this.emfPickerOptions(this.mapState.filename),
         );
-      this.onMapStateChange();
+      } else {
+        // Force fallback for Safari/iPad
+        throw new TypeError("Native Save Picker not supported");
+      }
     } catch (e) {
       if (e.name === "AbortError") {
         return;
       }
-      throw e;
+
+      // Fallback: Download via Blobs
+      let builder = new EOBuilder();
+      this.mapState.emf.write(builder);
+      let data = builder.build();
+      this.downloadFile(this.mapState.filename, data);
+      this.mapState.saved();
+      this.onMapStateChange();
+      return;
     }
-    this.save();
+
+    this.mapState = this.mapState.withFileHandle(fileHandle);
+    await this.save();
+  }
+
+  downloadFile(name, data) {
+    const blob = new Blob([data], { type: "application/octet-stream" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = name;
+    a.click();
+    URL.revokeObjectURL(url);
   }
 
   showNewMap() {

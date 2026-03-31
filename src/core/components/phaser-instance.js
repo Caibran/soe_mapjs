@@ -260,7 +260,7 @@ export class PhaserInstance extends LitElement {
           preventDefaultUp: false,
         },
         touch: {
-          capture: true,
+          capture: false,
         },
         activePointers: 3,
       },

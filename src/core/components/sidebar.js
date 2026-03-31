@@ -12,6 +12,7 @@ import {
   UndoIcon,
   RedoIcon,
   FolderOpenIcon,
+  SaveAsWorkflowIcon,
 } from "@spectrum-web-components/icons-workflow";
 
 import "./action-group";
@@ -99,6 +100,12 @@ export class Sidebar extends LitElement {
       <eomap-action-group vertical>
         ${this.renderMenubar()}
         <eomap-sidebar-button
+          label="Save"
+          .icon=${SaveAsWorkflowIcon}
+          @click=${this.onSaveClick}
+        >
+        </eomap-sidebar-button>
+        <eomap-sidebar-button
           label="Maps"
           .icon=${FolderOpenIcon}
           @click=${this.onMapsClick}
@@ -125,9 +132,14 @@ export class Sidebar extends LitElement {
     `;
   }
 
+  onSaveClick(event) {
+    event.preventDefault();
+    this.dispatchEvent(new CustomEvent("save-map-prompt"));
+  }
+
   onMapsClick(event) {
     event.preventDefault();
-    this.dispatchEvent(new CustomEvent("open-map"));
+    this.dispatchEvent(new CustomEvent("open-map-explorer"));
   }
 
   onToolClick(event) {

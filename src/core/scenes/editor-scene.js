@@ -306,16 +306,6 @@ export class EditorScene extends Phaser.Scene {
   }
 
   handlePointerMove(pointer) {
-    if (this.isPinching) {
-      this.handlePinch();
-      return;
-    }
-
-    if (this.isTwoFingerPanning) {
-      this.handleTwoFingerPan();
-      return;
-    }
-
     this.updateOverrideTool(pointer);
     this.tool.pointerMove(this, pointer);
     this.updateIsToolBeingUsed();
@@ -326,12 +316,6 @@ export class EditorScene extends Phaser.Scene {
   }
 
   handlePointerDown(pointer) {
-    if (this.input.pointer1.isDown && this.input.pointer2.isDown) {
-      this.cancelLongPressTimer();
-      this.startPinchOrPan();
-      return;
-    }
-
     if (isTouch()) {
       this.startLongPressTimer(pointer);
     }
@@ -343,15 +327,6 @@ export class EditorScene extends Phaser.Scene {
 
   handlePointerUp(pointer) {
     this.cancelLongPressTimer();
-
-    if (this.isPinching || this.isTwoFingerPanning) {
-      if (this.input.totalActivePointers < 2) {
-        this.isPinching = false;
-        this.isTwoFingerPanning = false;
-      }
-      return;
-    }
-
     this.tool.pointerUp(this, pointer);
     this.updateOverrideTool(pointer);
     this.updateIsToolBeingUsed();
